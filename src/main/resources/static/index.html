@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Retiro 10&#37;</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	 <script>
+
+// var persona = {
+//   "nombre" : "jesus",
+//   "apellido": "crisostomo",
+//   "edad": 22,
+//   "nickname": "fazt"
+// };
+//
+// var personas = [
+//   {userId: "1", id:"1",title: "sunt aut facere repellat provident", body:"sunt aut facere repellat provident"},
+//   {userId: "2", id:"2",title: "sunt aut facere repellat provident", body:"sunt aut facere repellat provident"},
+//   {userId: "3", id:"3",title: "sunt aut facere repellat provident", body:"sunt aut facere repellat provident"},
+// ];
+//
+// var salida = '';
+//
+// for(var i = 0; i < personas.length; i++) {
+//   salida += `<li>${personas[i].nombre} su nickname es ${personas[i].nickname}</li>`;
+// }
+//
+// document.getElementById('personas')
+//   .innerHTML = salida;
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+	var respuesta = JSON.parse(xhttp.responseText);
+	var personas = respuesta.personas;
+
+	var salida = '';
+
+	for(var i = 0; i < personas.length; i++) {
+	  salida += `<li>${personas[i].nombre} su nickname es ${personas[i].nickname}</li>`;
+	}
+
+	document.getElementById('personas')
+	  .innerHTML = salida;
+
+  }
+};
+xhttp.open("GET", "personas.json", true);
+xhttp.send();
+
+</script>
+
+</body>
+</html>
